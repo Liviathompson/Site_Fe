@@ -1,199 +1,295 @@
 /* === 1. Configuração Global e Variáveis === */
+
+/* :root permite definir variáveis CSS globais */
 :root {
+    /* Paleta de Cores */
     --cor-marrom: #5D4037;
     --cor-dourado: #D4AF37;
-    --cor-dourado-hover: #C09E31;
+    --cor-dourado-hover: #C09E31; /* Um tom mais escuro para efeito hover */
     --cor-fundo: #FDFBF8;
     --cor-texto: #333;
     --cor-texto-claro: #FFFFFF;
+    --cor-borda: rgba(93, 64, 55, 0.1); /* Borda suave com transparência */
     
-    --fonte-titulo: 'Playfair Display', serif;
-    --fonte-texto: 'Lato', sans-serif;
+    /* Tipografia */
+    --fonte-titulo: 'Montserrat', sans-serif;
+    --fonte-texto: 'Poppins', sans-serif;
     
-    --largura-container: 1100px;
+    /* Layout e Espaçamento */
+    --largura-container: 1200px; /* Largura máxima do conteúdo centralizado */
+    --nav-height: 80px; /* Altura da barra de navegação (para offsets) */
+
+    /* Animações e Efeitos */
     --transicao-suave: all 0.3s ease;
-    --nav-height: 80px; 
+    --transicao-media: all 0.5s ease;
+    
+    /* Sombras */
+    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --sombra-media: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --sombra-forte: 0 12px 35px rgba(0, 0, 0, 0.2);
+    
+    /* Bordas */
+    --border-radius: 12px;
+    --border-radius-pequeno: 8px;
 }
 
+/* === Reset e Base === */
+/* Remove estilos padrão do navegador */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Faz padding e border não aumentarem a largura/altura total */
 }
 
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height); 
+    scroll-behavior: smooth; /* Habilita rolagem suave para links âncora (#) */
+    scroll-padding-top: var(--nav-height); /* Desconta a altura do menu fixo ao rolar para uma âncora */
 }
 
 body {
-    font-family: var(Montserrat, sans-serif);
+    font-family: var(--fonte-texto);
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
-    line-height: 1.7;
-    padding-top: var(--nav-height); 
+    line-height: 1.7; /* Altura da linha para melhor legibilidade */
+    padding-top: var(--nav-height); /* Evita que o conteúdo inicial fique atrás do menu fixo */
+    overflow-x: hidden; /* Previne scroll horizontal */
 }
 
+/* Estilos base para cabeçalhos (títulos) */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--fonte-titulo);
     color: var(--cor-marrom);
     font-weight: 700;
+    line-height: 1.3;
 }
 
+/* Garante que imagens sejam responsivas e não quebrem o layout */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* === 2. Classes Utilitárias (Reutilizáveis) === */
-.container {
-    max-width: var(--largura-container);
-    margin: 0 auto;
-    padding: 0 20px;
+/* Estilo base para links */
+a {
+    text-decoration: none;
+    color: inherit; /* Herda a cor do elemento pai */
+    transition: var(--transicao-suave);
 }
 
+/* Remove marcadores de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* === 2. Classes Utilitárias (Reutilizáveis) === */
+
+/* Container principal para centralizar o conteúdo */
+.container {
+    max-width: var(--largura-container);
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 0 20px; /* Espaçamento lateral em telas menores */
+}
+
+/* Estilo padrão do botão "Call to Action" (CTA) */
 .cta-button {
-    display: inline-block;
-    background-color: var(--cor-dourado);
+    display: inline-flex; /* Permite alinhar itens dentro (como ícones) */
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--cor-dourado), var(--cor-dourado-hover));
     color: var(--cor-marrom);
     font-family: var(--fonte-titulo);
     font-size: 1.1rem;
     font-weight: 700;
     text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 5px;
+    padding: 16px 32px;
+    border-radius: var(--border-radius);
     transition: var(--transicao-suave);
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: var(--sombra-suave);
+    position: relative; /* Necessário para o efeito ::before */
+    overflow: hidden; /* Esconde o efeito ::before fora do botão */
 }
 
+/* Efeito de brilho ao passar o mouse */
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+/* Animação do botão ao passar o mouse (hover) */
 .cta-button:hover {
-    background-color: var(--cor-dourado-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px); /* Eleva o botão */
+    box-shadow: var(--sombra-media);
 }
 
+/* Ativa a animação de brilho */
+.cta-button:hover::before {
+    left: 100%;
+}
+
+/* Efeito ao clicar no botão */
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+/* Classe de espaçamento padrão para seções */
 .section-padding {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
+/* Estilo padrão para títulos de seção */
 .section-title {
     font-size: 2.8rem;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+    position: relative; /* Necessário para o pseudo-elemento ::after */
 }
 
+/* Linha decorativa abaixo do título da seção */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--cor-dourado), var(--cor-marrom));
+    border-radius: 2px;
+}
+
+/* Classe para animação "fade-in" (aparecer suavemente) */
 .fade-in-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0; /* Começa invisível */
+    transform: translateY(30px); /* Começa 30px abaixo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+/* Classe ativada pelo JavaScript quando a seção está visível */
 .fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Torna-se visível */
+    transform: translateY(0); /* Volta à posição original */
 }
 
-/* === 3. Estilos do Menu de Navegação (ATUALIZADO) === */
+/* === 3. Estilos do Menu de Navegação === */
 #navbar {
-    position: fixed; 
+    position: fixed; /* Fica fixo no topo da tela */
     top: 0;
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    z-index: 1000;
-    background-color: var(--cor-marrom); /* Fundo marrom desde o início */
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    background-color: var(--cor-marrom);
+    transition: var(--transicao-media);
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco (para a versão com scroll) */
 }
 
-/* Classe adicionada via JS ao rolar (agora só adiciona sombra) */
+/* Estilo do menu quando o usuário rola a página */
 #navbar.scrolled {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: rgba(93, 64, 55, 0.95); /* Fundo com leve transparência */
+    box-shadow: var(--sombra-suave);
 }
 
+/* Container interno do menu */
 #navbar .nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Alinha logo à esquerda e menu à direita */
     align-items: center;
     height: 100%;
 }
 
-/* MUDANÇA: Classe do link da logo */
+/* Logo do menu */
 #navbar .nav-logo-link {
-    display: flex; /* Para alinhar texto e ícone */
+    display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre texto e ícone */
-    
+    gap: 12px;
     font-family: var(--fonte-titulo);
     font-size: 1.5rem;
     color: var(--cor-dourado);
     text-decoration: none;
     font-weight: 700;
+    transition: var(--transicao-suave);
 }
 
+#navbar .nav-logo-link:hover {
+    transform: scale(1.05); /* Aumenta o logo no hover */
+}
+
+/* Bloco do menu de navegação (links) */
 #navbar .nav-menu {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 #navbar .nav-menu ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 35px; /* Espaçamento entre os links */
 }
 
-#navbar .nav-menu a {
+#navbar .nav-menu a:not(.nav-cta-button) {
     color: var(--cor-texto-claro);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
     position: relative;
-    padding: 5px 0;
-    font-size: 1.3rem;
+    padding: 8px 0;
+    font-size: 1.1rem;
+    transition: var(--transicao-suave);
 }
 
+/* Linha animada abaixo dos links (exceto o botão CTA) */
 #navbar .nav-menu a:not(.nav-cta-button)::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
+    width: 0; /* Começa com largura 0 */
     height: 2px;
     background-color: var(--cor-dourado);
     transition: width 0.3s ease;
 }
 
+/* Mostra a linha no hover ou se o link estiver ativo */
 #navbar .nav-menu a:not(.nav-cta-button):hover::after,
 #navbar .nav-menu a.active::after {
-    width: 100%;
+    width: 100%; /* Expande a largura para 100% */
 }
 
-/* MUDANÇA: Ícone do avião agora é controlado pelo 'gap' */
-#navbar .nav-logo-airplane {
-    color: var(--cor-dourado);
-    display: flex; /* Para centralizar o SVG perfeitamente */
-    align-items: center;
-}
-
-/* MUDANÇA: Estilo do novo botão CTA no menu */
+/* Estilo do botão CTA dentro do menu */
 .nav-cta-button {
-    padding: 10px 30px; /* Padding menor para caber no menu */
+    padding: 10px 15px;
     font-size: 1rem;
     font-weight: 700;
-    box-shadow: none; /* Sombra mais sutil ou nenhuma */
-    border-radius: 999px; /* Botão mais arredondado */
+    border-radius: 25px; /* Mais arredondado */
+    background: var(--cor-dourado);
+    color: var(--cor-marrom);
+    transition: var(--transicao-suave);
+}
+
+.nav-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-suave);
 }
 
 /* Botão Hamburguer (Mobile) */
 .nav-toggle {
-    display: none;
+    display: none; /* Escondido por padrão (aparece em media queries) */
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001;
+    z-index: 1001; /* Acima do menu para ser clicável */
+    flex-direction: column;
+    gap: 4px; /* Espaço entre as linhas */
 }
 
 .nav-toggle .hamburger-line {
@@ -201,229 +297,482 @@ img {
     width: 25px;
     height: 3px;
     background-color: var(--cor-dourado);
-    margin: 5px 0;
     transition: var(--transicao-suave);
+    border-radius: 2px;
 }
 
-/* === 4. Estilos das Secções === */
+/* Animação do "X" quando o menu está ativo (aberto) */
+.nav-toggle.is-active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
 
-/* --- Hero Section (Topo) --- */
-/* --- Hero Section (Topo) --- */
+.nav-toggle.is-active .hamburger-line:nth-child(2) {
+    opacity: 0; /* Linha do meio desaparece */
+}
+
+.nav-toggle.is-active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* === 4. Estilos das Seções === */
+
+/* --- Hero Section (Header principal) --- */
 #hero {
-    min-height: calc(100vh - var(--nav-height)); 
+    min-height: 100vh; /* Ocupa a altura inteira da tela */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--cor-texto-claro);
-    
-    /* ESTA É A LINHA ATUALIZADA COM A SUA IMAGEM */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fundo_aviao.png');
-    
-    background-size: cover;       /* Faz a imagem cobrir toda a área */
-    background-position: center;  /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    /* Imagem de fundo com overlay escuro para legibilidade */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/fundoaviao.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 40px 20px;
+    position: relative;
 }
 
 #hero .hero-content {
-    max-width: 800px;
+    max-width: 900px;
+    position: relative;
+    z-index: 2; /* Fica acima de qualquer elemento de fundo */
 }
+
 #hero h1 {
     font-size: 3.5rem;
     color: var(--cor-texto-claro);
-    margin-bottom: 20px;
-}
-#hero .subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para legibilidade */
+    animation: fadeInUp 1s ease-out; /* Animação de entrada */
 }
 
-/* --- Sobre o Programa --- */
+#hero .subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.2s both; /* Animação com delay */
+}
+
+.hero-cta {
+    animation: fadeInUp 1s ease-out 0.4s both;
+    margin-bottom: 20px;
+}
+
+.alunos-count {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* Indicador de Scroll (seta para baixo) */
+.scroll-arrow {
+    width: 2px;
+    height: 20px;
+    background: var(--cor-texto-claro);
+    margin: 5px auto 0;
+    position: relative;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--cor-texto-claro);
+    border-bottom: 2px solid var(--cor-texto-claro);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+/* Animação de "pulo" para o indicador de scroll */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Animação de "subir" para o texto do hero */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Seção Sobre o Programa --- */
 #sobre {
     background-color: #fff;
 }
-#sobre .container {
+
+.sobre-content {
     display: flex;
     align-items: center;
-    gap: 40px;
-}
-#sobre .sobre-texto, #sobre .sobre-imagem {
-    flex: 1;
-}
-#sobre .sobre-imagem img {
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-#sobre h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-#sobre .visual-callout {
-    font-family: var(--fonte-titulo);
-    font-size: 1.2rem;
-    color: var(--cor-marrom);
-    margin-top: 20px;
-    font-style: italic;
+    gap: 60px;
 }
 
-/* --- Estrutura do Curso (Método V.O.E) --- */
-#metodo {
-    background-color: var(--cor-fundo);
+.sobre-texto, .sobre-imagem {
+    flex: 1; /* Ocupa metade do espaço (50%) */
 }
-#metodo .metodo-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    text-align: center;
-}
-#metodo .metodo-card {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    border-top: 5px solid var(--cor-dourado);
+
+.sobre-imagem img {
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra-media);
     transition: var(--transicao-suave);
 }
-#metodo .metodo-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-#metodo .metodo-card .letra {
-    font-family: var(--fonte-titulo);
-    font-size: 3rem;
-    color: var(--cor-dourado);
-    margin-bottom: 10px;
-}
-#metodo .metodo-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+
+.sobre-imagem img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--sombra-forte);
 }
 
-/* --- Depoimentos --- */
-#depoimentos {
-    background-color: var(--cor-marrom);
-    color: var(--cor-texto-claro);
-    background: linear-gradient(rgba(93, 64, 55, 0.95), rgba(93, 64, 55, 0.95)), url('https://placehold.co/1920x1080/FFFFFF/AAAAAA?text=Cabine+Sutil');
-    background-attachment: fixed;
-    background-size: cover;
+#sobre h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
 }
-#depoimentos h2 {
-    color: var(--cor-texto-claro);
-}
-#depoimentos .depoimentos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-#depoimentos .depoimento-card {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 8px;
-    border-left: 5px solid var(--cor-dourado);
-}
-#depoimentos .depoimento-card p {
+
+/* Bloco de destaque visual */
+#sobre .visual-callout {
+    font-family: var(--fonte-titulo);
+    font-size: 1.3rem;
+    color: var(--cor-marrom);
+    margin-top: 25px;
     font-style: italic;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(93, 64, 55, 0.05));
+    border-left: 4px solid var(--cor-dourado);
+    border-radius: var(--border-radius-pequeno);
+}
+
+/* --- Seção Método V.O.E --- */
+#metodo {
+    background: linear-gradient(135deg, var(--cor-marrom), #4a3429);
+    color: var(--cor-texto-claro);
+}
+
+#metodo .section-title {
+    color: var(--cor-texto-claro);
+}
+
+#metodo .section-title::after {
+    background: linear-gradient(90deg, var(--cor-dourado), #fff);
+}
+
+/* Grid para os 3 cards do método */
+.metodo-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 40px;
+    text-align: center;
+}
+
+.metodo-card {
+    background: rgba(255, 255, 255, 0.1); /* Fundo "glassmorphism" */
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transicao-suave);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho (similar ao CTA) */
+.metodo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.metodo-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.metodo-card:hover::before {
+    left: 100%;
+}
+
+.metodo-card .letra {
+    font-family: var(--fonte-titulo);
+    font-size: 4rem;
+    color: var(--cor-dourado);
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.metodo-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--cor-texto-claro);
+}
+
+/* --- Seção Módulos do Curso --- */
+.seccao-modulos {
+    background-color: var(--cor-fundo);
+}
+
+/* Grid responsivo para os cards */
+.container-cards {
+    display: grid;
+    /* Cria colunas de no mínimo 320px, auto-ajustáveis */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card-modulo {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra-suave);
+    overflow: hidden; /* Garante que a imagem não "vaze" do card */
+    transition: var(--transicao-suave);
+    border: 1px solid var(--cor-borda);
+}
+
+.card-modulo:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-media);
+}
+
+.img-card {
+    width: 100%;
+    height: 200px; /* Altura fixa para a imagem */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    transition: var(--transicao-suave);
+}
+
+/* Efeito de zoom na imagem ao passar o mouse no card */
+.card-modulo:hover .img-card {
+    transform: scale(1.05);
+}
+
+.card-conteudo {
+    padding: 25px;
+}
+
+.card-modulo h3 {
+    font-size: 1.4rem;
+    color: var(--cor-marrom);
     margin-bottom: 15px;
 }
-#depoimentos .depoimento-card .autor {
-    font-weight: 700;
-    color: var(--cor-dourado);
+
+.card-modulo p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
 }
 
-/* --- Para Quem É --- */
+/* --- Seção Depoimentos --- */
+#depoimentos {
+    /* NOTA: A imagem de fundo é um placeholder. Troque pela sua. */
+    background: linear-gradient(rgba(93, 64, 55, 0.9), rgba(93, 64, 55, 0.9)), url('https://placehold.co/1920x1080/FFFFFF/AAAAAA?text=Cabine+Sutil');
+    background-size: cover;
+    background-attachment: fixed; /* Efeito Parallax */
+    background-position: center;
+    color: var(--cor-texto-claro);
+}
+
+#depoimentos .section-title {
+    color: var(--cor-texto-claro);
+}
+
+#depoimentos .section-title::after {
+    background: linear-gradient(90deg, var(--cor-dourado), #fff);
+}
+
+.depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 30px;
+}
+
+.depoimento-card {
+    background: rgba(255, 255, 255, 0.1); /* Efeito glassmorphism */
+    padding: 30px 25px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--cor-dourado);
+    backdrop-filter: blur(10px);
+    transition: var(--transicao-suave);
+}
+
+.depoimento-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.depoimento-card p {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.depoimento-card .autor {
+    font-weight: 700;
+    color: var(--cor-dourado);
+    font-size: 1rem;
+}
+
+/* --- Seção "Para Quem É" --- */
 #para-quem-e {
     background-color: #fff;
 }
-#para-quem-e ul {
-    list-style: none;
+
+.para-quem-lista {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 25px;
     max-width: 900px;
     margin: 0 auto;
 }
-#para-quem-e li {
+
+.para-quem-lista li {
     font-size: 1.1rem;
     display: flex;
     align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+    border-radius: var(--border-radius-pequeno);
+    border-left: 4px solid var(--cor-dourado);
+    transition: var(--transicao-suave);
 }
-#para-quem-e li::before {
+
+.para-quem-lista li:hover {
+    transform: translateX(10px); /* Move para a direita no hover */
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), transparent);
+}
+
+/* Ícone de "check" customizado */
+.para-quem-lista li::before {
     content: '';
     display: inline-block;
     width: 24px;
     height: 24px;
-    min-width: 24px;
+    min-width: 24px; /* Garante que não encolha */
     margin-right: 15px;
     background-color: var(--cor-dourado);
+    /* SVG do ícone "check" embutido via Data URI */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
     background-size: 18px 18px;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 50%;
+    border-radius: 50%; /* Círculo perfeito */
 }
 
-/* --- Sobre a Autora --- */
-#autora .container {
+/* --- Seção Sobre a Autora --- */
+#autora {
+    background: linear-gradient(135deg, var(--cor-marrom), #4a3429);
+    color: var(--cor-texto-claro);
+}
+
+.autora-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
 }
-#autora .autora-imagem, #autora .autora-texto {
+
+.autora-imagem, .autora-texto {
     flex: 1;
 }
-#autora .autora-imagem img {
-    border-radius: 50%;
+
+.autora-imagem img {
+    width: 350px;
+    height: 500px;
+    border-radius: 10%; /* Imagem redonda */
     border: 5px solid var(--cor-dourado);
-    box-shadow: 500 500 500px rgba(212, 175, 55, 0.3);
-}
-#autora h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-.autora-social {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    margin-top: 25px;
-}
-.autora-social a {
-    color: var(--cor-marrom);
-    text-decoration: none;
+    box-shadow: var(--sombra-media);
     transition: var(--transicao-suave);
 }
-.autora-social a:hover {
-    color: var(--cor-dourado);
-    transform: scale(1.1);
-}
-.autora-social a svg {
-    width: 30px; 
-    height: 30px;
+.autora-imagem img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--sombra-forte);
 }
 
-/* --- Bônus --- */
+#autora h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: var(--cor-texto-claro);
+}
+
+/* Ícones de redes sociais */
+.autora-social {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.autora-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: var(--transicao-suave);
+    backdrop-filter: blur(10px);
+}
+
+.autora-social a:hover {
+    background: var(--cor-dourado);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-suave);
+}
+
+.autora-social a svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* --- Seção Bônus --- */
 #bonus {
     background-color: #fff;
 }
-#bonus ul {
-    list-style: none;
+
+.bonus-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     max-width: 900px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
 }
-#bonus li {
+
+.bonus-lista li {
     font-size: 1.1rem;
     display: flex;
     align-items: center;
-    background-color: var(--cor-fundo);
-    padding: 15px;
-    border-radius: 5px;
-    border-left: 3px solid var(--cor-marrom);
+    background: linear-gradient(135deg, rgba(93, 64, 55, 0.05), transparent);
+    padding: 20px;
+    border-radius: var(--border-radius-pequeno);
+    border-left: 4px solid var(--cor-marrom);
+    transition: var(--transicao-suave);
 }
-#bonus li::before {
+
+.bonus-lista li:hover {
+    transform: translateX(10px);
+    background: linear-gradient(135deg, rgba(93, 64, 55, 0.1), transparent);
+}
+
+/* Ícone de "presente" customizado */
+.bonus-lista li::before {
     content: '';
     display: inline-block;
     width: 24px;
@@ -431,154 +780,306 @@ img {
     min-width: 24px;
     margin-right: 15px;
     background-color: var(--cor-marrom);
+    /* SVG do ícone "presente" embutido */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3s-3 1.34-3 3c0 .35.07.69.18 1H6c-1.11 0-1.99.89-1.99 2L4 20c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2l.01 12H5.99V8H6z'/%3E%3C/svg%3E");
     background-size: 18px 18px;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 5px;
+    border-radius: var(--border-radius-pequeno);
 }
 
 /* --- Seção de Preço --- */
 #preco {
-    background-color: var(--cor-fundo);
+    background: linear-gradient(135deg, var(--cor-fundo), #f5f1e8);
 }
+
+#preco .subtitle {
+    text-align: center; /* 1. Centraliza o parágrafo */
+    max-width: 700px; /* Garante que não fique muito largo em telas grandes */
+    margin-left: auto; /* Ajuda a centralizar o bloco de texto */
+    margin-right: auto; /* Ajuda a centralizar o bloco de texto */
+    margin-bottom: 40px; /* 2. Adiciona o espaço antes do card de preço */
+}
+
 .preco-card {
     max-width: 700px;
     margin: 0 auto;
     background-color: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border-top: 5px solid var(--cor-dourado);
+    padding: 50px 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra-media);
+    border-top: 5px solid var(--cor-dourado); /* Destaque no topo */
+    text-align: center;
+    position: relative;
 }
+
 .preco-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--cor-marrom);
 }
+
+.preco-card > p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
 .preco-opcoes {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 30px;
-    margin-top: 30px;
+    gap: 40px;
+    margin: 40px 0;
+   
 }
+
 .preco-box {
     text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+    border-radius: var(--border-radius);
+    border: 2px solid transparent; /* Borda transparente para não "pular" no hover */
+    transition: var(--transicao-suave);
 }
+
+.preco-box:hover {
+    border-color: var(--cor-dourado);
+    transform: scale(1.05);
+}
+
 .preco-tipo {
     display: block;
     font-size: 0.9rem;
     font-weight: 700;
     color: #777;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
+
 .preco-valor {
     display: block;
     font-family: var(--fonte-titulo);
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--cor-marrom);
-}
-.preco-ou {
-    font-family: var(--fonte-titulo);
-    font-size: 1.2rem;
-    color: #aaa;
+    font-weight: 800;
 }
 
-/* --- Seção de FAQ --- */
+.preco-ou {
+    font-family: var(--fonte-titulo);
+    font-size: 1.3rem;
+    color: #aaa;
+    font-weight: 700;
+}
+
+.preco-cta {
+    margin: 30px 0;
+    font-size: 1.2rem;
+    padding: 18px 40px;
+}
+
+/* Selo de Garantia */
+.garantia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), transparent); /* Fundo verde suave */
+    border-radius: var(--border-radius-pequeno);
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.garantia svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* --- Seção de FAQ (Perguntas Frequentes) --- */
 #faq {
     background-color: #fff;
 }
-.faq-item {
-    border-bottom: 1px solid #eee;
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
+
+.faq-item {
+    border-bottom: 1px solid var(--cor-borda);
+    transition: var(--transicao-suave);
+}
+
 .faq-item:last-child {
     border-bottom: none;
 }
+
+/* O <summary> é a parte clicável do <details> */
 .faq-item summary {
     font-size: 1.2rem;
     font-weight: 700;
     font-family: var(--fonte-titulo);
     color: var(--cor-marrom);
-    padding: 20px 0;
+    padding: 25px 0;
     cursor: pointer;
-    list-style: none;
+    list-style: none; /* Remove a seta padrão do <details> */
     position: relative;
-    padding-right: 30px;
+    padding-right: 40px; /* Espaço para o ícone '+' */
+    transition: var(--transicao-suave);
 }
+
+.faq-item summary:hover {
+    color: var(--cor-dourado);
+}
+
+/* Ícone customizado '+' */
 .faq-item summary::after {
     content: '+';
     font-family: var(--fonte-texto);
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--cor-dourado);
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    transition: transform 0.2s ease;
+    transition: var(--transicao-suave);
 }
+
+/* Quando o <details> está aberto, muda o ícone para '−' */
 .faq-item[open] summary::after {
     content: '−';
+    transform: translateY(-50%); /* Remove a rotação se houver */
 }
+
+/* Estilo do conteúdo (parágrafo) dentro do <details> */
 .faq-item p {
-    padding-bottom: 20px;
+    padding: 0 0 25px 0;
     line-height: 1.8;
+    color: #666;
+    animation: fadeIn 0.3s ease-out; /* Animação de "fade" ao abrir */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* --- CTA Final --- */
 #cta-final {
     text-align: center;
-    background-color: var(--cor-marrom);
+    background: linear-gradient(135deg, var(--cor-marrom), #4a3429);
     color: var(--cor-texto-claro);
+    position: relative;
+    overflow: hidden;
 }
+
+/* Padrão sutil de fundo (opcional) */
+#cta-final::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.03)"><path d="M0,0 L100,100 M100,0 L0,100"/></svg>');
+    background-size: 50px 50px;
+}
+
+#cta-final .container {
+    position: relative;
+    z-index: 2; /* Acima do padrão de fundo */
+}
+
 #cta-final h2 {
     font-size: 2.8rem;
     color: var(--cor-texto-claro);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
+
 #cta-final p {
     max-width: 600px;
-    margin: 0 auto 30px auto;
-    font-size: 1.1rem;
+    margin: 0 auto 35px auto;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.cta-final-button {
+    font-size: 1.3rem;
+    padding: 20px 45px;
 }
 
 /* --- Rodapé --- */
-footer {
-    background-color: #333;
+#footer {
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
     color: #ccc;
-    padding: 40px 0;
+    padding: 60px 0 30px;
+}
+
+.footer-content {
     text-align: center;
 }
-footer .container {
-    font-size: 0.9rem;
+
+.social-icons {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
-footer .social-icons {
-    margin-bottom: 20px;
-}
-footer .social-icons a {
-    color: var(--cor-texto-claro);
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1.5rem;
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
     transition: var(--transicao-suave);
 }
-footer .social-icons a:hover {
+
+.social-icons a:hover {
+    background: var(--cor-dourado);
+    transform: translateY(-3px);
+    color: var(--cor-marrom); /* Muda a cor do SVG para marrom */
+}
+
+.social-icons a svg {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #ccc;
+    margin: 0 15px;
+    transition: var(--transicao-suave);
+}
+
+.footer-links a:hover {
     color: var(--cor-dourado);
 }
-footer .footer-links {
-    margin-bottom: 10px;
-}
-footer .footer-links a {
-    color: #ccc;
-    text-decoration: none;
-    margin: 0 10px;
-}
-footer .footer-links a:hover {
-    color: var(--cor-texto-claro);
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
 /* === 5. Media Queries (Responsividade) === */
 
-@media (max-width: 992px) {
+/* Tablets (ex: iPads em modo paisagem) */
+@media (max-width: 1024px) {
     .section-title {
         font-size: 2.4rem;
     }
@@ -586,102 +1087,199 @@ footer .footer-links a:hover {
     #hero h1 {
         font-size: 3rem;
     }
-
-    /* --- Menu Mobile --- */
-    .nav-toggle {
-        display: block; 
+    
+    .sobre-content,
+    .autora-content {
+        gap: 40px; /* Reduz o espaçamento */
     }
     
-    /* MUDANÇA: O avião NÃO é mais escondido, pois faz parte da logo */
-    /* .nav-logo-airplane { display: none; } <-- REMOVIDO */
+    .metodo-container,
+    .depoimentos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    }
+    
+    .container-cards {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* Tablets Pequenos e Mobile (ex: iPads em modo retrato e telemóveis) */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 70px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    #hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    /* CORREÇÃO: Desativa o parallax em telemóveis para performance */
+    #depoimentos {
+        background-attachment: scroll; 
+    }
+    
+    /* === Menu Mobile === */
+    .nav-toggle {
+        display: flex; /* Mostra o botão hamburguer */
+    }
     
     #navbar .nav-menu {
-        position: absolute;
+        position: fixed;
         top: var(--nav-height);
         left: 0;
         width: 100%;
-        transform: translateY(-120%);
+        height: calc(100vh - var(--nav-height)); /* Altura total da tela menos o menu */
+        transform: translateY(-100%); /* Esconde o menu para cima */
         opacity: 0;
-        pointer-events: none;
-        background-color: var(--cor-marrom);
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        pointer-events: none; /* Desativa cliques quando escondido */
+        background: rgba(93, 64, 55, 0.98);
+        flex-direction: column; /* Links em coluna */
+        padding: 30px 0;
+        box-shadow: var(--sombra-media);
+        transition: var(--transicao-media);
+        backdrop-filter: blur(20px);
     }
+    
+    /* Classe ativada pelo JS para mostrar o menu */
     #navbar .nav-menu.is-active {
-        transform: translateY(0);
+        transform: translateY(0); /* Traz o menu para a posição 0 */
         opacity: 1;
-        pointer-events: auto;
+        pointer-events: auto; /* Ativa cliques */
     }
+    
     #navbar .nav-menu ul {
         flex-direction: column;
         text-align: center;
-        gap: 15px;
-    }
-    #navbar .nav-menu a {
-        color: var(--cor-texto-claro);
-        font-size: 1.1rem;
-    }
-    
-    /* MUDANÇA: Espaçamento do botão CTA no menu mobile */
-    .nav-cta-button {
-        margin-top: 15px;
-    }
-    
-    .nav-toggle.is-active .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-    .nav-toggle.is-active .hamburger-line:nth-child(2) {
-        opacity: 0;
-    }
-    .nav-toggle.is-active .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-    
-    /* --- Outras Secções --- */
-    #sobre .container,
-    #autora .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    #autora .autora-imagem {
-        order: -1; 
+        gap: 20px;
         margin-bottom: 20px;
     }
-    #autora .autora-imagem img {
-        width: 200px;
-        height: 200px;
+    
+    #navbar .nav-menu a {
+        font-size: 1.2rem;
+        padding: 12px 0;
+    }
+    
+    /* === Layouts de coluna única === */
+    .sobre-content,
+    .autora-content {
+        flex-direction: column; /* Empilha os elementos */
+        text-align: center;
+        gap: 40px;
+    }
+    
+    /* Na seção da autora, inverte a ordem (imagem primeiro) */
+    .autora-imagem {
+        order: -1; 
+    }
+    
+    .autora-imagem img {
+        max-width: 300px;
         margin: 0 auto;
     }
+    
     .autora-social {
-        justify-content: center;
+        justify-content: center; /* Centraliza ícones sociais */
     }
-    #para-quem-e ul,
-    #bonus ul {
+    
+    /* Passa os grids para 1 coluna */
+    .metodo-container,
+    .depoimentos-grid,
+    .para-quem-lista,
+    .bonus-lista {
+        grid-template-columns: 1fr;
+    }
+    
+    .preco-opcoes {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .container-cards {
         grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 768px) {
+/* Mobile Pequeno */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px; /* Menos padding lateral */
+    }
+    
     .section-padding {
-        padding: 60px 0;
+        padding: 50px 0;
     }
-    #metodo .metodo-container,
-    #depoimentos .depoimentos-grid {
-        grid-template-columns: 1fr;
-    }
-    #hero h1 {
-        font-size: 2.5rem;
-    }
-    #hero .subtitle {
-        font-size: 1.1rem;
-    }
+    
     .section-title {
+        font-size: 1.8rem;
+    }
+    
+    #hero h1 {
         font-size: 2rem;
     }
-    .preco-opcoes {
+    
+    #hero .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .cta-button {
+        font-size: 1rem;
+        padding: 14px 28px;
+    }
+    
+    .preco-card {
+        padding: 30px 20px;
+    }
+    
+    .preco-valor {
+        font-size: 1.8rem;
+    }
+    
+    .footer-links {
+        display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
+    }
+    
+    .footer-links a {
+        margin: 5px 0;
+    }
+}
+
+/* === Acessibilidade === */
+
+/* Para quem usa modo de Alto Contraste no S.O. */
+@media (prefers-contrast: high) {
+    :root {
+        --cor-marrom: #000000;
+        --cor-dourado: #ffff00;
+        --cor-texto: #000000;
+        --cor-fundo: #ffffff;
+    }
+    
+    .cta-button {
+        border: 2px solid #000000;
+    }
+}
+
+/* Para quem prefere "Movimento Reduzido" no S.O. */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        /* Desativa todas as animações e transições */
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto; /* Desativa a rolagem suave */
     }
 }

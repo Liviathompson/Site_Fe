@@ -9,28 +9,39 @@
         content="Transforme o sonho de voar em realidade com o Método V.O.E. (Verdade, Organização e Encantamento) e conquiste sua vaga.">
     <meta name="keywords"
         content="comissário de voo, aeromoça, curso aviação, processo seletivo, companhias aéreas, método voe">
+    <meta name="author" content="Fernanda Costa">
+
+    <meta property="og:title" content="Pronto para Decolar - Conquiste sua vaga nas companhias aéreas">
+    <meta property="og:description" content="Transforme o sonho de voar em realidade com o Método V.O.E.">
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" content="img/fundo_aviao.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body>
-
-  <nav id="navbar">
+    <!-- Menu Navegação  -->
+    <nav id="navbar">
         <div class="container nav-container">
-            
             <a href="#hero-content-anchor" class="nav-logo-link" aria-label="Página inicial - Pronto para Decolar">
                 <span>Pronto para Decolar</span>
                 <div class="nav-logo-airplane" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
                     </svg>
                 </div>
             </a>
-            
+
             <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -39,51 +50,56 @@
 
             <div class="nav-menu">
                 <ul>
-                    <li><a href="#sobre">O Curso</a></li>
                     <li><a href="#metodo">Método V.O.E</a></li>
+                    <li><a href="#modulo">Treinamento</a></li>
                     <li><a href="#depoimentos">Depoimentos</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
-                
+
                 <a href="#preco" class="cta-button nav-cta-button">
                     Quero Decolar!
                 </a>
             </div>
         </div>
     </nav>
-
-    <header id="hero">
+    <!-- Header  -->
+    <header id="hero" role="banner">
         <div class="hero-content fade-in-section" id="hero-content-anchor">
-            <h1>O passo a passo para conquistar sua vaga nas cias aéreas</h1>
+            <h1>O passo a passo para conquistar sua vaga como Comissário (a) de Voo</h1>
             <p class="subtitle">Transforme o sonho de voar em realidade com um método que une clareza, preparo e
                 confiança.</p>
-            <a href="#preco" class="cta-button" aria-label="Veja o valor e comece agora">Quero começar minha jornada
-                agora!</a>
+            <a href="#preco" class="cta-button hero-cta" aria-label="Veja o valor e comece agora">Quero começar minha
+                jornada agora!</a>
+            <p class="alunos-count">Mais de 232 alunos já embarcaram nessa jornada!</p>
         </div>
-    </header>
 
+    </header>
+    <!-- sobre -->
     <main>
-        <section id="sobre" class="section-padding">
+        <section id="sobre" class="section-padding" aria-labelledby="sobre-title">
             <div class="container fade-in-section">
-                <div class="sobre-texto">
-                    <h2>Você não precisa adivinhar o caminho. Eu te mostro a rota completa.</h2>
-                    <p>O Pronto para Decolar é o treinamento ideal para quem quer se preparar com método e propósito
-                        para ingressar na aviação.</p>
-                    <p>Com aulas curtas, práticas e inspiradoras, você vai entender como se destacar nos processos
-                        seletivos, se comunicar com segurança e construir sua imagem profissional desde o primeiro
-                        passo.</p>
-                    <p class="visual-callout">Um método leve, prático e 100% voltado à aprovação.</p>
-                </div>
-                <div class="sobre-imagem">
-                    <img src="https://placehold.co/600x400/FDFBF8/5D4037?text=Mockup+do+Curso"
-                        alt="Telas do curso Pronto para Decolar exibidas em um notebook e telemóvel.">
+                <div class="sobre-content">
+                    <div class="sobre-texto">
+                        <h2 id="sobre-title">Você não precisa adivinhar o caminho. Eu te mostro a rota completa.</h2>
+                        <p>O Pronto para Decolar é o treinamento ideal para quem quer se preparar com método e propósito
+                            para ingressar na aviação.</p>
+                        <p>Com aulas curtas, práticas e inspiradoras, você vai entender como se destacar nos processos
+                            seletivos, se comunicar com segurança e construir sua imagem profissional desde o primeiro
+                            passo.</p>
+                        <p class="visual-callout">Um método leve, prático e 100% voltado à aprovação.</p>
+                    </div>
+                    <div class="sobre-imagem">
+                        <img src="img/fundoelogo.png"
+                            alt="Telas do curso Pronto para Decolar exibidas em um notebook e telemóvel."
+                            loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section id="metodo" class="section-padding">
+        <!-- Metodo V.O.E  -->
+        <section id="metodo" class="section-padding" aria-labelledby="metodo-title">
             <div class="container fade-in-section">
-                <h2 class="section-title">O método V.O.E — Sua rota para a cabine</h2>
+                <h2 id="metodo-title" class="section-title">O método V.O.E — Sua rota para a cabine</h2>
                 <div class="metodo-container">
                     <div class="metodo-card">
                         <div class="letra">V</div>
@@ -103,10 +119,62 @@
                 </div>
             </div>
         </section>
+        <!-- Módulos do Curso  -->
+        <section id="modulo" class="seccao-modulos section-padding" aria-labelledby="modulos-title">
+            <div class="container">
+                <h2 id="modulos-title" class="section-title">Módulos do Curso</h2>
+                <div class="container-cards">
+                    <div class="card-modulo">
+                        <img src="img/capamodulo1.jpg" alt="Capa do Módulo 1" class="img-card" loading="lazy">
+                        <div class="card-conteudo">
+                            <h3>Módulo 1: Bem-vindo a bordo</h3>
+                            <p>Comece aqui. Vamos explorar os conceitos fundamentais e preparar o seu ambiente de
+                                trabalho.</p>
+                        </div>
+                    </div>
 
-        <section id="depoimentos" class="section-padding">
+                    <div class="card-modulo">
+                        <img src="img/capamodulo2.jpg" alt="Capa do Módulo 2" class="img-card" loading="lazy">
+                        <div class="card-conteudo">
+                            <h3>Módulo 2: A sua verdade (Método V.O.E)</h3>
+                            <p>Neste módulo, vamos mergulhar nas técnicas avançadas e construir o nosso primeiro projeto
+                                prático.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-modulo">
+                        <img src="img/capamodulo3.jpg" alt="Capa do Módulo 3" class="img-card" loading="lazy">
+                        <div class="card-conteudo">
+                            <h3>Módulo 3: Organize sua rota (Método V.O.E)</h3>
+                            <p>Hora de aplicar tudo o que aprendeu. Crie um projeto completo do zero e prepare o seu
+                                portfólio.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-modulo">
+                        <img src="img/capamodulo4.jpg" alt="Capa do Módulo 4" class="img-card" loading="lazy">
+                        <div class="card-conteudo">
+                            <h3>Módulo 4: Encante no processo seletivo (Método V.O.E)</h3>
+                            <p>Vamos explorar ferramentas profissionais e otimizar o seu fluxo de trabalho para alta
+                                performance.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-modulo">
+                        <img src="img/capamodulo5.jpg" alt="Capa do Módulo 5" class="img-card" loading="lazy">
+                        <div class="card-conteudo">
+                            <h3>Módulo 5: Você pronto para decolar</h3>
+                            <p>Prepare o seu projeto final para o público e aprenda as estratégias de lançamento no
+                                mercado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Depoimentos  -->
+        <section id="depoimentos" class="section-padding" aria-labelledby="depoimentos-title">
             <div class="container fade-in-section">
-                <h2 class="section-title">Eles já embarcaram nessa jornada</h2>
+                <h2 id="depoimentos-title" class="section-title">Eles já embarcaram nessa jornada</h2>
                 <div class="depoimentos-grid">
                     <div class="depoimento-card">
                         <p>“O curso me deu confiança e clareza — passei na seleção da primeira companhia!”</p>
@@ -123,11 +191,11 @@
                 </div>
             </div>
         </section>
-
-        <section id="para-quem-e" class="section-padding">
+        <!-- Pra quem é o curso -->
+        <section id="para-quem-e" class="section-padding" aria-labelledby="para-quem-title">
             <div class="container fade-in-section">
-                <h2 class="section-title">Esse curso é para você que...</h2>
-                <ul>
+                <h2 id="para-quem-title" class="section-title">Esse curso é para você que...</h2>
+                <ul class="para-quem-lista">
                     <li>Sempre sonhou em voar, mas não sabia por onde começar</li>
                     <li>Quer se destacar em entrevistas e dinâmicas</li>
                     <li>Busca um método leve, com direcionamento real</li>
@@ -135,57 +203,64 @@
                 </ul>
             </div>
         </section>
-
-        <section id="autora" class="section-padding">
+        <!-- Sobre a Mentora  -->
+        <section id="autora" class="section-padding" aria-labelledby="autora-title">
             <div class="container fade-in-section">
-                <div class="autora-imagem">
-                    <img src="img/Fernanda - corporativo (13).jpg"
-                        alt="Foto de Fernanda Costa, mentora de carreira e criadora do curso Pronto para Decolar.">
-                </div>
-                <div class="autora-texto">
-                    <h2>Quem te conduz até a cabine</h2>
-                    <p>Fernanda Costa é mentora de carreira e especialista em desenvolvimento profissional. Após sua
-                        transição da aviação para a área de desenvolvimento humano, criou o Pronto para Decolar para
-                        ajudar futuros comissários a construírem suas carreiras com propósito, segurança e clareza — sem
-                        perder o brilho no olhar por voar.</p>
-                    <div class="autora-social">
-                        <a href="#" target="_blank" aria-label="Instagram de Fernanda Costa">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.001C8.749 1.162 8.323 1.173 7.053 1.23c-3.628.166-6.131 2.678-6.297 6.297C.7 8.777.688 9.199.688 12s.012 3.223.07 4.493c.166 3.619 2.669 6.131 6.297 6.297 1.27.058 1.696.07 4.949.07s3.68-.012 4.949-.07c3.628-.166 6.131-2.678 6.297-6.297.058-1.27.07-1.696.07-4.493s-.012-3.223-.07-4.493c-.166-3.619-2.669-6.131-6.297-6.297C15.68 1.173 15.254 1.162 12 1.162z">
-                                </path>
-                                <path
-                                    d="M12 7.163c-2.66 0-4.837 2.177-4.837 4.837s2.177 4.837 4.837 4.837 4.837-2.177 4.837-4.837S14.66 7.163 12 7.163zm0 8.674c-2.12 0-3.837-1.717-3.837-3.837s1.717-3.837 3.837-3.837 3.837 1.717 3.837 3.837-1.717 3.837-3.837 3.837z">
-                                </path>
-                                <path
-                                    d="M18.802 6.198c-.62 0-1.12.5-1.12 1.12s.5 1.12 1.12 1.12 1.12-.5 1.12-1.12-.5-1.12-1.12-1.12z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a href="#" target="_blank" aria-label="LinkedIn de Fernanda Costa">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                        </a>
-                        <a href="#" target="_blank" aria-label="YouTube de Fernanda Costa">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z" />
-                            </svg>
-                        </a>
+                <div class="autora-content">
+                    <div class="autora-imagem">
+                        <img src="img/fernandacorporativo.jpg"
+                            alt="Foto de Fernanda Costa, mentora de carreira e criadora do curso Pronto para Decolar."
+                            loading="lazy">
+                    </div>
+                    <div class="autora-texto">
+                        <h2 id="autora-title">Quem te conduz até a cabine</h2>
+                        <p>Fernanda Costa é mentora de carreira e especialista em desenvolvimento profissional.</p>
+                        <br>
+                        <p>Após sua transição da aviação para a área de desenvolvimento humano, criou o Pronto para
+                            Decolar para ajudar futuros comissários a construírem suas carreiras com propósito,
+                            segurança e clareza sem perder o brilho no olhar por voar.</p>
+                        <br>
+                        <p>Com mais de 10 anos de experiência voando e chegando ao cargo mais alto de Examinadora, ela
+                            conhece os bastidores e sabe exatamente o que as companhias buscam em um candidato.</p>
+                        <div class="autora-social">
+                            <a href="https://www.instagram.com/fernandacostacarreira" target="_blank"
+                                aria-label="Instagram de Fernanda Costa">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.001C8.749 1.162 8.323 1.173 7.053 1.23c-3.628.166-6.131 2.678-6.297 6.297C.7 8.777.688 9.199.688 12s.012 3.223.07 4.493c.166 3.619 2.669 6.131 6.297 6.297 1.27.058 1.696.07 4.949.07s3.68-.012 4.949-.07c3.628-.166 6.131-2.678 6.297-6.297.058-1.27.07-1.696.07-4.493s-.012-3.223-.07-4.493c-.166-3.619-2.669-6.131-6.297-6.297C15.68 1.173 15.254 1.162 12 1.162z" />
+                                    <path
+                                        d="M12 7.163c-2.66 0-4.837 2.177-4.837 4.837s2.177 4.837 4.837 4.837 4.837-2.177 4.837-4.837S14.66 7.163 12 7.163zm0 8.674c-2.12 0-3.837-1.717-3.837-3.837s1.717-3.837 3.837-3.837 3.837 1.717 3.837 3.837-1.717 3.837-3.837 3.837z" />
+                                    <path
+                                        d="M18.802 6.198c-.62 0-1.12.5-1.12 1.12s.5 1.12 1.12 1.12 1.12-.5 1.12-1.12-.5-1.12-1.12-1.12z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/fernandacostacarreira" target="_blank"
+                                aria-label="LinkedIn de Fernanda Costa">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.youtube.com/@fernandacostacarreira" target="_blank"
+                                aria-label="YouTube de Fernanda Costa">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="bonus" class="section-padding">
+        <!-- Bônus -->
+        <section id="bonus" class="section-padding" aria-labelledby="bonus-title">
             <div class="container fade-in-section">
-                <h2 class="section-title">Materiais exclusivos para acelerar sua aprovação</h2>
-                <ul>
+                <h2 id="bonus-title" class="section-title">Materiais exclusivos para acelerar sua aprovação</h2>
+                <ul class="bonus-lista">
                     <li>Checklist de Documentos e Certificações</li>
                     <li>Testes Jod Coach e SHL</li>
                     <li>Modelo de Currículo Profissional</li>
@@ -193,12 +268,12 @@
                 </ul>
             </div>
         </section>
-
-        <section id="preco" class="section-padding">
-            <div class="container fade-in-section" style="text-align: center;">
-                <h2 class="section-title">Acesso imediato à sua preparação</h2>
-                <p class="subtitle" style="max-width: 600px; margin: -20px auto 40px auto;">Escolha o plano que te leva
-                    mais alto e comece hoje mesmo a transformar seu sonho em carreira.</p>
+        <!-- Preço do Treinamento  -->
+        <section id="preco" class="section-padding" aria-labelledby="preco-title">
+            <div class="container fade-in-section">
+                <h2 id="preco-title" class="section-title">Acesso imediato à sua preparação</h2>
+                <p class="subtitle">Escolha o plano que te leva mais alto e comece hoje mesmo a transformar seu sonho em
+                    carreira.</p>
                 <div class="preco-card">
                     <h3>Manual Prático Pronto para Decolar</h3>
                     <p>Acesso completo ao Método V.O.E, todos os módulos, materiais bônus e atualizações.</p>
@@ -213,14 +288,24 @@
                             <span class="preco-valor">12x de R$ 25,55</span>
                         </div>
                     </div>
-                    <a href="https://pay.kiwify.com.br/tOZBEmt" class="cta-button" style="margin-top: 30px;">Garantir minha vaga agora</a>
+                    <a href="https://pay.kiwify.com.br/tOZBEmt" class="cta-button preco-cta">Garantir minha vaga
+                        agora</a>
+
+                    <div class="garantia">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                        </svg>
+                        <span>Garantia de 7 dias ou seu dinheiro de volta</span>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section id="faq" class="section-padding">
-            <div class="container fade-in-section" style="max-width: 800px;">
-                <h2 class="section-title">Perguntas Frequentes</h2>
+        <!-- FAQ  -->
+        <section id="faq" class="section-padding" aria-labelledby="faq-title">
+            <div class="container fade-in-section">
+                <h2 id="faq-title" class="section-title">Perguntas Frequentes</h2>
                 <div class="faq-container">
                     <details class="faq-item">
                         <summary>O curso serve para quem está começando do zero?</summary>
@@ -248,53 +333,56 @@
                 </div>
             </div>
         </section>
-
+        <!-- CTA Final  -->
         <section id="cta-final" class="section-padding">
             <div class="container fade-in-section">
                 <h2>Está pronto para decolar?</h2>
                 <p>O próximo embarque já está aberto. Garanta sua vaga agora e inicie sua preparação com quem entende do
                     mercado e viveu essa jornada.</p>
-                <a href="https://pay.kiwify.com.br/tOZBEmt" class="cta-button">Quero entrar para o Pronto para Decolar!</a>
+                <a href="https://pay.kiwify.com.br/tOZBEmt" class="cta-button cta-final-button">Quero entrar para o
+                    Pronto para Decolar!</a>
             </div>
         </section>
     </main>
-
-    <footer id="footer">
+    <!-- Footer  -->
+    <footer id="footer" role="contentinfo">
         <div class="container">
-            <div class="social-icons">
-                <a href="#" target="_blank" aria-label="Instagram de Fernanda Costa">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.001C8.749 1.162 8.323 1.173 7.053 1.23c-3.628.166-6.131 2.678-6.297 6.297C.7 8.777.688 9.199.688 12s.012 3.223.07 4.493c.166 3.619 2.669 6.131 6.297 6.297 1.27.058 1.696.07 4.949.07s3.68-.012 4.949-.07c3.628-.166 6.131-2.678 6.297-6.297.058-1.27.07-1.696.07-4.493s-.012-3.223-.07-4.493c-.166-3.619-2.669-6.131-6.297-6.297C15.68 1.173 15.254 1.162 12 1.162z">
-                        </path>
-                        <path
-                            d="M12 7.163c-2.66 0-4.837 2.177-4.837 4.837s2.177 4.837 4.837 4.837 4.837-2.177 4.837-4.837S14.66 7.163 12 7.163zm0 8.674c-2.12 0-3.837-1.717-3.837-3.837s1.717-3.837 3.837-3.837 3.837 1.717 3.837 3.837-1.717 3.837-3.837 3.837z">
-                        </path>
-                        <path
-                            d="M18.802 6.198c-.62 0-1.12.5-1.12 1.12s.5 1.12 1.12 1.12 1.12-.5 1.12-1.12-.5-1.12-1.12-1.12z">
-                        </path>
-                    </svg>
-                </a>
-                <a href="#" target="_blank" aria-label="LinkedIn de Fernanda Costa">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-                <a href="#" target="_blank" aria-label="YouTube de Fernanda Costa">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="currentColor">
-                        <path
-                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z" />
-                    </svg>
-                </a>
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/fernandacostacarreira" target="_blank"
+                        aria-label="Instagram de Fernanda Costa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.001C8.749 1.162 8.323 1.173 7.053 1.23c-3.628.166-6.131 2.678-6.297 6.297C.7 8.777.688 9.199.688 12s.012 3.223.07 4.493c.166 3.619 2.669 6.131 6.297 6.297 1.27.058 1.696.07 4.949.07s3.68-.012 4.949-.07c3.628-.166 6.131-2.678 6.297-6.297.058-1.27.07-1.696.07-4.493s-.012-3.223-.07-4.493c-.166-3.619-2.669-6.131-6.297-6.297C15.68 1.173 15.254 1.162 12 1.162z" />
+                            <path
+                                d="M12 7.163c-2.66 0-4.837 2.177-4.837 4.837s2.177 4.837 4.837 4.837 4.837-2.177 4.837-4.837S14.66 7.163 12 7.163zm0 8.674c-2.12 0-3.837-1.717-3.837-3.837s1.717-3.837 3.837-3.837 3.837 1.717 3.837 3.837-1.717 3.837-3.837 3.837z" />
+                            <path
+                                d="M18.802 6.198c-.62 0-1.12.5-1.12 1.12s.5 1.12 1.12 1.12 1.12-.5 1.12-1.12-.5-1.12-1.12-1.12z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fernandacostacarreira" target="_blank"
+                        aria-label="LinkedIn de Fernanda Costa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@fernandacostacarreira" target="_blank"
+                        aria-label="YouTube de Fernanda Costa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
+                </div>
+                <p class="copyright">Copyright © 2025 Fernanda Costa. Todos os direitos reservados.</p>
             </div>
-            <div class="footer-links">
-                <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
-            </div>
-            <p class="copyright">Copyright © 2025 Fernanda Costa. Todos os direitos reservados.</p>
         </div>
     </footer>
 
