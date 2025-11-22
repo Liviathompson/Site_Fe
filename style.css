@@ -4,8 +4,8 @@
 :root {
     /* Paleta de Cores */
     --cor-marrom: #5D4037;
-    --cor-dourado: #FDD017;
-    --cor-dourado-hover: #C09E31; /* Um tom mais escuro para efeito hover */
+    --cor-dourado: #DFBA58;
+    --cor-dourado-hover: #CBA542; /* Um tom mais escuro para efeito hover */
     --cor-fundo: #FDFBF8;
     --cor-texto: #333;
     --cor-texto-claro: #FFFFFF;
@@ -471,6 +471,17 @@ ul, ol {
 
 #metodo .section-title::after {
     background: linear-gradient(90deg, var(--cor-dourado), #fff);
+}
+
+/* Remove o traço decorativo */
+.section-title.sem-borda::after {
+    display: none; /* Esconde o traço */
+}
+
+/* Ajusta o espaçamento para os títulos não ficarem muito longe um do outro */
+.section-title.sem-borda {
+    margin-top: -30px; /* Puxa o texto para cima (ajuste se necessário) */
+    padding-bottom: 0;
 }
 
 /* Grid para os 3 cards do método */
@@ -1261,6 +1272,30 @@ ul, ol {
     .footer-links a {
         margin: 5px 0;
     }
+
+  /* --- DENTRO DO @media (max-width: 480px) --- */
+
+/* 1. Mantém o texto numa linha só e pequeno (já tínhamos feito isso) */
+#navbar .nav-logo-link span {
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* 2. CORREÇÃO DO ÍCONE: Remove a margem negativa que causa a sobreposição */
+#navbar .nav-logo-airplane {
+    margin-left: 0; /* Zera a margem, impedindo que ele fique em cima do texto */
+}
+
+/* 3. Ajusta o espaço entre o texto e o ícone para ficar mais juntinho */
+#navbar .nav-logo-link {
+    gap: 5px; /* Diminui o espaço padrão de 12px para 5px */
+}
+
+/* (Opcional) Garante que o ícone fique pequeno */
+#navbar .nav-logo-airplane img {
+    width: 50px;
+    height: auto;
+}
 }
 
 /* === Acessibilidade === */
