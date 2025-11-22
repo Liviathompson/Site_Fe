@@ -4,7 +4,7 @@
 :root {
     /* Paleta de Cores */
     --cor-marrom: #5D4037;
-    --cor-dourado: #D4AF37;
+    --cor-dourado: #FDD017;
     --cor-dourado-hover: #C09E31; /* Um tom mais escuro para efeito hover */
     --cor-fundo: #FDFBF8;
     --cor-texto: #333;
@@ -222,6 +222,8 @@ ul, ol {
 #navbar .nav-logo-link:hover {
     transform: scale(1.05); /* Aumenta o logo no hover */
 }
+
+#navbar .nav-logo-airplane { margin-left: -30px; display:flex; align-items:center; }
 
 /* Bloco do menu de navegação (links) */
 #navbar .nav-menu {
@@ -458,6 +460,7 @@ ul, ol {
 
 /* --- Seção Método V.O.E --- */
 #metodo {
+ 
     background: linear-gradient(135deg, var(--cor-marrom), #4a3429);
     color: var(--cor-texto-claro);
 }
@@ -583,7 +586,7 @@ ul, ol {
 /* --- Seção Depoimentos --- */
 #depoimentos {
     /* NOTA: A imagem de fundo é um placeholder. Troque pela sua. */
-    background: linear-gradient(rgba(93, 64, 55, 0.9), rgba(93, 64, 55, 0.9)), url('https://placehold.co/1920x1080/FFFFFF/AAAAAA?text=Cabine+Sutil');
+    background: linear-gradient(rgba(93, 64, 55, 0.9), rgba(93, 64, 55, 0.9));
     background-size: cover;
     background-attachment: fixed; /* Efeito Parallax */
     background-position: center;
@@ -685,8 +688,9 @@ ul, ol {
 
 .autora-content {
     display: flex;
-    align-items: flex-start;
-    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
 }
 
 .autora-imagem, .autora-texto {
@@ -694,12 +698,16 @@ ul, ol {
 }
 
 .autora-imagem img {
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     height: 500px;
+    object-fit: cover;
+    object-position: top;
     border-radius: 10%; /* Imagem redonda */
     border: 5px solid var(--cor-dourado);
     box-shadow: var(--sombra-media);
     transition: var(--transicao-suave);
+    margin: 0 auto;
 }
 .autora-imagem img:hover {
     transform: scale(1.05);
@@ -1163,7 +1171,7 @@ ul, ol {
         margin-bottom: 20px;
     }
     
-    #navbar .nav-menu a {
+    #navbar .nav-menu a:not(.nav-cta-button) {
         font-size: 1.2rem;
         padding: 12px 0;
     }
@@ -1183,6 +1191,7 @@ ul, ol {
     
     .autora-imagem img {
         max-width: 300px;
+        height: 300px;
         margin: 0 auto;
     }
     
